@@ -1,0 +1,48 @@
+{
+    "video_labels": {
+        "dance": {"motion_score_min": 50},
+        "meme": {"frame_count_max": 60, "requires_funny": true},
+        "vlog": {"frame_count_min": 300},
+        "action": {"motion_score_min": 70},
+        "travel": {"object_requirements": ["landscape", "building"]},
+        "cooking": {"object_requirements": ["food", "kitchen"]},
+        "fitness": {"object_requirements": ["person"], "motion_score_min": 40},
+        "gaming": {"object_requirements": ["screen", "controller"]}
+    },
+    "text_labels": {
+        "funny": {"sentiment_min": 0.7, "emotion_requirements": ["joy"]},
+        "informational": {"sentiment_min": 0.8, "text_count_min": 2},
+        "educational": {"keywords": ["education", "tutorial", "learn"]},
+        "review": {"keywords": ["review", "opinion", "rating"]},
+        "storytime": {"keywords": ["story", "experience", "memory"]},
+        "reaction": {"keywords": ["react", "response", "thoughts"]},
+        "news": {"keywords": ["news", "update", "report"]},
+        "motivational": {"emotion_requirements": ["positive"], "sentiment_min": 0.75}
+    },
+    "audio_labels": {
+        "music": {"tempo_min": 100, "energy_min": 0.1},
+        "emotional": {"emotion_requirements": ["joy", "anger", "sadness"]},
+        "challenge": {"keywords": ["challenge", "try", "attempt"]},
+        "narration": {"speech_confidence": 0.7},
+        "dialogue": {"word_count_min": 10},
+        "sound_effects": {"energy_min": 0.15, "tempo_max": 50},
+        "interview": {"keywords": ["interview", "talk", "question"]},
+        "podcast": {"duration_min": 300}
+    },
+    "sound_types": {
+        "music": {"tempo_min": 60, "energy_min": 0.1},
+        "voiceover": {"speech_confidence": 0.7},
+        "informational": {"word_count_min": 20},
+        "ambient": {"energy_max": 0.05},
+        "sound_effects": {"energy_min": 0.15, "speech_confidence_max": 0.3}
+    },
+    "reel_types": {
+        "personal": ["vlog", "storytime"],
+        "entertainment": ["funny", "meme", "dance", "prank", "reaction"],
+        "educational": ["informational", "educational", "tutorial", "review"],
+        "challenge": ["challenge"],
+        "news": ["news", "report"],
+        "lifestyle": ["travel", "cooking", "fitness"],
+        "gaming": ["gaming"]
+    }
+}

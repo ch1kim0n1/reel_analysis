@@ -7,14 +7,17 @@ Instagram Reel Analyzer is a Python-based tool that performs comprehensive analy
 ## Features
 
 1. **Content Labeling**
+
    - Multi-label classification with an extensive library of Instagram-specific categories
    - Categories include: funny, meme, informational, educational, emotional, music, dance, vlog, tutorial, reaction, challenge, fitness, cooking, travel, fashion, beauty, gaming, review, unboxing, prank, storytime
 
 2. **Audio Analysis**
+
    - Detects different types of audio: music, voiceover, informational, ambient, sound_effects
    - Analyzes tempo, energy, and speech content
 
 3. **Object Detection**
+
    - Identifies objects in videos using YOLOv8
    - Categories include: human, animal, cartoon, object, food, vehicle, nature
 
@@ -29,15 +32,17 @@ Instagram Reel Analyzer is a Python-based tool that performs comprehensive analy
 - Dependencies:
   ```bash
   pip install opencv-python numpy pytesseract moviepy speechrecognition instaloader requests transformers librosa ultralytics
-
+  ```
 
 ## This enhanced version includes:
+
 1. Audio type classification
 2. Extended content categories
 3. Object detection using YOLOv8
 4. Multiple label support with a comprehensive Instagram-specific library
 
 To use this, you'll need to:
+
 1. Install the additional dependency: `pip install ultralytics`
 2. Update your requirements.txt file with all dependencies
 3. Ensure you have sufficient memory as the object detection model requires more resources
