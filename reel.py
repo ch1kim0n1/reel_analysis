@@ -28,7 +28,6 @@ class VideoLabeler:
         self.object_detector = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50")
 
     def download_instagram_reel(self, url):
-        # ... (unchanged)
         try:
             shortcode = url.split('/')[-2]
             post = instaloader.Post.from_shortcode(self.L.context, shortcode)
@@ -43,7 +42,6 @@ class VideoLabeler:
             return None
 
     def extract_audio(self, video_path):
-        # ... (unchanged)
         try:
             video = VideoFileClip(video_path)
             audio_path = video_path.replace('.mp4', '.wav')
@@ -55,7 +53,6 @@ class VideoLabeler:
             return None
 
     def analyze_text_content(self, video_path):
-        # ... (unchanged)
         pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
         video = cv2.VideoCapture(video_path)
         frames_analyzed = 0
@@ -129,7 +126,6 @@ class VideoLabeler:
         return sound_types
 
     def detect_objects(self, video_path):
-        # ... (unchanged)
         video = cv2.VideoCapture(video_path)
         detected_objects = set()
         frames_analyzed = 0
