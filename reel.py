@@ -13,8 +13,8 @@ from concurrent.futures import ThreadPoolExecutor
 class VideoLabeler:
     def __init__(self):
         # Initialize models and tools
-        self.sentiment_analyzer = pipeline("sentiment-analysis")
-        self.emotion_classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base")
+        self.sentiment_analyzer = pipeline("sentiment-analysis", model="distilbert/distilbert-base-uncased-finetuned-sst-2-english", revision="714eb0f")
+        self.emotion_classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", revision="main")
         self.recognizer = sr.Recognizer()
         self.L = instaloader.Instaloader()
         
@@ -101,8 +101,8 @@ class VideoLabeler:
                 emotions = self.emotion_classifier(text)
                 
                 # Analyze audio features
-                y, sr = librosa.load(audio_path)
-                tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
+                y, sample_rate = librosa.load(audio_path)
+                tempo, _ = librosa.beat.beat_track(y=y, sr=sample_rate)
                 energy = librosa.feature.rms(y=y).mean()
                 
                 return {
@@ -112,6 +112,15 @@ class VideoLabeler:
                     'tempo': tempo,
                     'energy': energy
                 }
+        except FileNotFoundError:
+            print(f"Error analyzing audio: File not found")
+            return None
+        except ValueError:
+            print(f"Error analyzing audio: Value error")
+            return None
+        except librosa.util.exceptions.ParameterError:
+            print(f"Error analyzing audio: Parameter error")
+            return None
         except Exception as e:
             print(f"Error analyzing audio: {e}")
             return None
