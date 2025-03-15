@@ -50,6 +50,7 @@ class VideoLabeler:
             video = VideoFileClip(video_path)
             audio_path = video_path.replace('.mp4', '.wav')
             video.audio.write_audiofile(audio_path)
+            video.close()  # Pa69a
             return audio_path
         except Exception as e:
             print(f"Error extracting audio: {e}")
@@ -75,7 +76,7 @@ class VideoLabeler:
                 text_content.append(text.strip())
             frames_analyzed += 1
             
-        video.release()
+        video.release()  # P7ad2
         
         # Analyze extracted text
         if text_content:
@@ -136,7 +137,7 @@ class VideoLabeler:
             prev_frame = gray
             frame_count += 1
             
-        video.release()
+        video.release()  # Pdd05
         
         return {
             'motion_score': motion_score / frame_count if frame_count > 0 else 0,
